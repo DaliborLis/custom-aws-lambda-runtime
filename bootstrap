@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -euo pipefail
+
+/opt/java/jre-17/bin/java -jar custom-lambda-runtime-1.0-SNAPSHOT.jar
