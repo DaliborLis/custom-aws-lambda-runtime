@@ -1,6 +1,5 @@
 package com.lis.custom.lambda.runtime;
 
-import com.lis.custom.lambda.impl.LambdaCode;
 import com.lis.custom.lambda.runtime.model.InvocationResponse;
 import java.io.IOException;
 import java.net.URI;
@@ -9,6 +8,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.lis.custom.lambda.handler.LambdaHandler;
 
 /**
  *
@@ -19,9 +19,9 @@ public class AwsLambdaRuntime {
     private static final String REQUEST_ID_HEADER = "lambda-runtime-aws-request-id";
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
 
-    private final LambdaCode lambdaCode;
+    private final LambdaHandler lambdaCode;
 
-    public AwsLambdaRuntime(LambdaCode lambdaCode) {
+    public AwsLambdaRuntime(LambdaHandler lambdaCode) {
         this.lambdaCode = lambdaCode;
     }
 
@@ -32,7 +32,7 @@ public class AwsLambdaRuntime {
 
             try {
                 HttpRequest request = HttpRequest.newBuilder()
-                        .POST(HttpRequest.BodyPublishers.ofString(lambdaCode.handler(invocation.event())))
+                        .POST(HttpRequest.BodyPublishers.ofString(lambdaCode.handle(invocation.event())))
                         .uri(URI.create(String.format("http://%s/2018-06-01/runtime/invocation/%s/response", endpoint, invocation.requestId())))
                         .build();
 

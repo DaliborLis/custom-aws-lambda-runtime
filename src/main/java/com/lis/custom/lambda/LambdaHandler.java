@@ -1,6 +1,6 @@
-package com.lis.custom.lambda.app;
+package com.lis.custom.lambda;
 
-import com.lis.custom.lambda.impl.HelloLambda;
+import com.lis.custom.lambda.handler.HelloLambda;
 import com.lis.custom.lambda.runtime.AwsLambdaRuntime;
 import java.io.IOException;
 
