@@ -5,6 +5,11 @@ The main goal of the project is to play a little bit with custom implementation 
 
 Another step is compilation to native image by using GraalVM.
 
+### Building the application
+```bash
+mvn clean install
+```
+
 ### Docker build
 ```bash
 docker build -t custom-lambda-runtime-graal -f GraalVM/Dockerfile .
