@@ -4,7 +4,6 @@ RUN gu install native-image
 WORKDIR /lambda
 COPY ./target/custom-lambda-runtime-1.0-SNAPSHOT.jar ./
 RUN native-image -jar custom-lambda-runtime-1.0-SNAPSHOT.jar --verbose --no-fallback
-#RUN  microdnf install zip
 
 FROM debian:bullseye-slim
 WORKDIR /lambda
@@ -15,8 +14,6 @@ ADD bootstrap bootstrap
 
 RUN chmod +x bootstrap
 RUN chmod +x ./custom-lambda-runtime-1.0-SNAPSHOT
-
-#RUN zip -j function.zip bootstrap custom-lambda-runtime-1.0-SNAPSHOT
 
 
 ENTRYPOINT ["./custom-lambda-runtime-1.0-SNAPSHOT"]
