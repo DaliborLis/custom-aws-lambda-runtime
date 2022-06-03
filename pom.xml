@@ -38,7 +38,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.lis.custom.lambda.app.LambdaHandler</mainClass>
+                                    <mainClass>com.lis.custom.lambda.LambdaHandler</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
