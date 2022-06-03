@@ -10,7 +10,7 @@ WORKDIR /lambda
 
 COPY --from=build-aot /lambda/custom-lambda-runtime-1.0-SNAPSHOT ./
 
-ADD bootstrap bootstrap
+ADD GraalVM/bootstrap bootstrap
 
 RUN chmod +x bootstrap
 RUN chmod +x ./custom-lambda-runtime-1.0-SNAPSHOT

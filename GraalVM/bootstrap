@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -euo pipefail
+
+./custom-lambda-runtime-1.0-SNAPSHOT
