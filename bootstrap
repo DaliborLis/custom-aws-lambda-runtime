@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-/opt/java/jre-17/bin/java -jar custom-lambda-runtime-1.0-SNAPSHOT.jar
+/opt/java/jre-17/bin/java -jar /lambda/custom-lambda-runtime-1.0-SNAPSHOT.jar

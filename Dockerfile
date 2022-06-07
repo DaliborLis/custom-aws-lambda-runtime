@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim as jre-17-build
+FROM debian:bookworm-slim as jre-17-build
 
 ADD "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17%2B35/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz" "/opt/java/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz"
 
@@ -7,10 +7,10 @@ RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "binutils"]
 
 RUN tar -xzf /opt/java/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz -C /opt/java/
-RUN /opt/java/jdk-17+35/bin/jlink --add-modules java.base,java.net.http --output /opt/java/jdk-17_35-jre --strip-debug --no-man-pages --no-header-files --compress=2
+RUN /opt/java/jdk-17+35/bin/jlink --add-modules java.base,java.net.http,java.logging,java.naming,java.xml,java.security.jgss --output /opt/java/jdk-17_35-jre --strip-debug --no-man-pages --no-header-files --compress=2
 
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 RUN mkdir /lambda
 WORKDIR /lambda

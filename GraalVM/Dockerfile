@@ -5,7 +5,7 @@ WORKDIR /lambda
 COPY ./target/custom-lambda-runtime-1.0-SNAPSHOT.jar ./
 RUN native-image -jar custom-lambda-runtime-1.0-SNAPSHOT.jar --verbose --no-fallback
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 WORKDIR /lambda
 
 COPY --from=build-aot /lambda/custom-lambda-runtime-1.0-SNAPSHOT ./

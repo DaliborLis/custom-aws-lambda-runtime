@@ -6,9 +6,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.lis.custom.lambda.handler.LambdaHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -18,6 +18,7 @@ public class AwsLambdaRuntime {
 
     private static final String REQUEST_ID_HEADER = "lambda-runtime-aws-request-id";
     private static final HttpClient HTTP_CLIENT = HttpClient.newHttpClient();
+    private static final Logger LOGGER = LoggerFactory.getLogger(AwsLambdaRuntime.class);
 
     private final LambdaHandler lambdaCode;
 
@@ -39,7 +40,7 @@ public class AwsLambdaRuntime {
                 HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
             } catch (Exception ex) {
                 handleInvocationError(endpoint, invocation, ex);
-                Logger.getLogger(AwsLambdaRuntime.class.getName()).log(Level.SEVERE, null, ex);
+                LOGGER.error("Error occured", ex);
             }
         }
     }
